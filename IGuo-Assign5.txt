@@ -1,0 +1,150 @@
+Question 1:
+╭────────────────╮
+│ quantityOnHand │
+╞════════════════╡
+│            100 │
+╰────────────────╯
+Getting the quantity on hand of the targeted item by selecting the row where the item is described as "bottle of antibiotics" in the item table
+
+Question 2:
+╭───────────────╮
+│ volunteerName │
+╞═══════════════╡
+│ Gene Lewin    │
+╰───────────────╯
+In the volunteer table, select the names of volunteers whose phone numbers do not start with '2' and whose names do not end with 'Jones'.
+
+Question 3:
+╭───────────────╮
+│ volunteerName │
+╞═══════════════╡
+│ George Brewer │
+╰───────────────╯
+The names of volunteers can be get from the volunteer table, but it must be connected to task_type table to filter out the tast type "transporting".
+So assignment is joined by volunteerId, task is then joined by taskCode, and task_type is joined by taskTypeId.
+
+Question 4:
+│        taskDescription         │
+╞════════════════════════════════╡
+│ Prepare 100 food packages      │
+│ Take packages to the warehouse │
+╰────────────────────────────────╯
+Combine the rows of table task and assignment, and keep all the rows in task. If the taskCode in assignment is null, then it doesn't have any assignment.
+Return the descriptions of tasks in these rows.
+
+Question 5:
+╭─────────────────╮
+│ packageTypeName │
+╞═════════════════╡
+│ food and water  │
+╰─────────────────╯
+Select the names of package type in table package_type, containing items that have "bottle" in their descriptions.
+To connect package_type with item, combine tables package_type, package_contents, package and item.
+Summarize the rows containing the same packageTypeName into one row.
+
+Question 6:
+╭───────────────────────╮
+│    itemDescription    │
+╞═══════════════════════╡
+│ bottle of antibiotics │
+│ bottle of aspirin     │
+│ flashlight            │
+│ pack of bandages      │
+╰───────────────────────╯
+Combine the rows of table item and package_contents, and keep all the rows in item. If the itemId in package_content is null, then it is not included in any package.
+Return the descriptions of items in these rows.
+
+Question 7:
+╭────────────────────────────────╮
+│        taskDescription         │
+╞════════════════════════════════╡
+│ Prepare 5,000 packages         │
+│ Prepare 20 children's packages │
+│ Prepare 100 water packages     │
+│ Prepare 20 children's packages │
+╰────────────────────────────────╯
+Select the descriptions of tasks that are assigned to volunteer whose locations end with "NJ". Combine the tables task, assignment and volunteer.
+Summarize the rows that have the same tasks.
+
+Question 8:
+╭───────────────╮
+│ volunteerName │
+╞═══════════════╡
+│ Joan Simmons  │
+│ Chris Jordan  │
+╰───────────────╯
+Combine the rows of tables volunteer and assignment. Filter out the rows whose startDateTime are between '2021-01-01 00:00:00' and '2021-06-30 23:59:59' 
+
+Question 9:
+╭───────────────╮
+│ volunteerName │
+╞═══════════════╡
+│ Julie White   │
+│ Gerry Banks   │
+╰───────────────╯
+Combine the rows ot tables volunteer, assignment, package, package_contents and item. Filter out the rows containing item naming "can of spam".
+
+QUestion 10:
+╭─────────────────╮
+│ itemDescription │
+╞═════════════════╡
+│ Baby formula    │
+╰─────────────────╯
+Combine the rows of tables item and package_contents. Filter out the rows whose values of single items multiplied by their amount in each package equals to 100.
+Return the descriptions of items in these rows.
+
+Question 11:
+╭────────────────┬──────────────╮
+│ taskStatusName │ volunteerNum │
+╞════════════════╪══════════════╡
+│ open           │            4 │
+│ closed         │            3 │
+│ ongoing        │            2 │
+│ pending        │            1 │
+╰────────────────┴──────────────╯
+Combine the rows of tables task_status, task and assingment. Summarize the rows of the same task status as it only needs to count the number of rows of each status.
+Return the status and the number of rows each status has. Return in a descending order of number of rows.
+
+Question 12:
+╭──────────┬─────────────╮
+│ taskCode │ totalWeight │
+╞══════════╪═════════════╡
+│      106 │       308.0 │
+╰──────────┴─────────────╯
+In the table package, add up the weight in each row that has the same taskCode. Arrange the result in descending order and only return the first one, which is the heaviest one.
+
+Question 13:
+╭──────────╮
+│ COUNT(*) │
+╞══════════╡
+│        3 │
+╰──────────╯
+Combine the tables task_type and task. Filter out the rows whose task type are not "packing".
+Return the number of rows.
+
+Question 14:
+╭─────────────────╮
+│ itemDescription │
+╞═════════════════╡
+│ can of spam     │
+│ dried fruit     │
+│ tent            │
+│ men's coat      │
+│ women's coat    │
+│ sleeping bag    │
+╰─────────────────╯
+Combine the rows of tables item, package_contents, package and assignment. Group the rows that have the same items.
+Filter out the groups whose number of different volunteers are less than 3 and return the description of these items.
+
+Question 15:
+╭───────────┬────────╮
+│ packageId │ value  │
+╞═══════════╪════════╡
+│         6 │  150.0 │
+│         2 │  151.0 │
+│         4 │  350.0 │
+│        10 │  750.0 │
+│         5 │ 1420.0 │
+╰───────────┴────────╯
+Combine the rows of tables package_contents and item. Group the rows that are assigned to the same package together. To get the total value, add up the value of item value multiplied by quantity.
+Filter out the groups that have total value greater than 100 and return in the ascending order of value.
